@@ -4,7 +4,7 @@ const axios = require("axios");
 const app = express();
 
 const getTagInnerHTML = (unparsedHTMLString, startStr, endStr) => {
-  console.log(startStr, endStr);
+  // console.log(startStr, endStr);
   let refinedSearch = unparsedHTMLString.substring(unparsedHTMLString.indexOf(startStr) + startStr.length);
   let finalSearch = refinedSearch.substring(0, refinedSearch.indexOf(endStr))
   return finalSearch;
@@ -45,7 +45,8 @@ app.get("/getTimeStories", (req, res) => {
         });
         feedContainerInnerHTML = innnerAndNewHtml[1];
       }
-      res.send(feedItems)
+      res.send(feedItems);
+      console.log("sent feedItems");
     })
     .catch(err => {
       console.log("err", err)
